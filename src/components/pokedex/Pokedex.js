@@ -1,7 +1,8 @@
 // Dependencies
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
+// Components
+import PokeCard from '../pokecard/Pokecard';
 const Pokedex = () => {
   // State
   const [pokemon, setPokemon] = useState(null);
@@ -28,6 +29,7 @@ const Pokedex = () => {
       })
 
   }, []);
+  // Mapping through state data to display pokemon
   let displayPokemon = pokemon ? pokemon.map((item) => (
     `${item.name}`
   )) : 'LOADING ....';
