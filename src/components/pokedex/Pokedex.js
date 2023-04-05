@@ -31,7 +31,7 @@ const Pokedex = () => {
   }, []);
   // Mapping through state data to display pokemon
   let displayPokemon = pokemon ? pokemon.map((item) => (
-    `${item.name}`
+    <PokeCard name={item.name} />
   )) : 'LOADING ....';
   return (
     <div>Pokedex
