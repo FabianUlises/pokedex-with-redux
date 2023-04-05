@@ -10,8 +10,8 @@ function App() {
     <Router>
       <AppNav />
       <Routes>
-        <Route path='/' Component={Pokegame} />
-        <Route path='/pokemon/:id' Component={PokegameDetails} />
+        <Route exact path='/' Component={Pokegame} />
+        <Route exact path='/pokemon/:id' Component={PokegameDetails} />
       </Routes>
     </Router>
   );
