@@ -4,10 +4,10 @@ import React, { useEffect, useState } from 'react';
 import PokeCard from '../pokecard/Pokecard';
 const Pokedex = (props) => {
 // Destructurin from props
-const {pokemon} = props;
+const {pokemon, id} = props;
   // Mapping through state data to display pokemon
   let displayPokemon = pokemon ? pokemon.map((item) => (
-    <PokeCard name={item.name} />
+    <PokeCard name={item.name} id={item.id} />
   )) : 'LOADING ....';
   return (
     <div>Pokedex

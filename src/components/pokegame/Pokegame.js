@@ -8,28 +8,29 @@ const Pokegame = () => {
     const [pokemon, setPokemon] = useState(null);
     // Useeffect
     useEffect(() => {
-    // test cl
-    console.log('hello there');
-    // Fetching pokemon api
-    axios.get('https://pokeapi.co/api/v2/pokemon?limit=8')
-        .then(res => {
-            if(res.statusText === 'OK'){
-                const {results} = res.data;
-                let newPokemon = [];
-                results.forEach((item, i) => {
-                    i++;
-                    let pokemonObj = {
-                    id: i,
-                    name: item.name
-                };
-                newPokemon.push(pokemonObj);
-        })
-        //  Updating state with data from api
-        setPokemon(newPokemon);
+        const fetchData = async() => {
+            try {
+                // Fetching pokemon api
+                const res = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=8');
+                if(res.statusText === 'OK'){
+                    const {results} = res.data;
+                    let newPokemon = [];
+                    results.forEach((item, i) => {
+                        i++;
+                        let pokemonObj = {
+                            id: i,
+                            name: item.name
+                        };
+                    newPokemon.push(pokemonObj);
+                    });
+                    setPokemon(newPokemon);
+                }
+            }catch(err) {
+                console.log(err);
+            }
         }
-      })
-
-  }, []);
+        fetchData();
+  }, [])
   return (
     <div className='game-container'>
         <Pokedex pokemon={pokemon} />
