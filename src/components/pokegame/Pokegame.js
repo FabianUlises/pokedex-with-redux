@@ -11,7 +11,7 @@ const Pokegame = () => {
         const fetchData = async() => {
             try {
                 // Fetching pokemon api
-                const res = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=8');
+                const res = await axios.get('https://pokeapi.co/api/v2/pokemon');
                 if(res.statusText === 'OK'){
                     const {results} = res.data;
                     let newPokemon = [];
@@ -34,7 +34,7 @@ const Pokegame = () => {
   return (
     <div className='game-container'>
         <Pokedex pokemon={pokemon} />
-        <Pokedex pokemon={pokemon} />
+        {/* <Pokedex pokemon={pokemon} /> */}
     </div>
   )
 }
