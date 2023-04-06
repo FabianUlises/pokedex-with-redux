@@ -11,16 +11,25 @@ const PokegameDetails = () => {
     // UseEffect
     useEffect(() => {
         const fetchData = async() => {
-            console.log(id)
-            // Fetching data from api
-            const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
-            setPokeDetails(res.data);
+            try {
+                console.log(id)
+                // Fetching data from api
+                const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
+                setPokeDetails(res.data);
+            } catch(err) {
+                console.log(err);
+            }
         };
         fetchData();
     }, [])
-
+    const {name, sprites} = pokeDetails;
+    console.log(Object.keys(pokeDetails).length)
+    const pokeImg = Object.keys(pokeDetails).length > 0 ? <img src={sprites.front_default} alt={name} /> : 'no image';
     return (
-        <div>PokegameDetails</div>
+        <div>PokegameDetails
+            {name}
+            {pokeImg}
+        </div>
     );
 };
 
